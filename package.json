@@ -8,5 +8,27 @@
     "express-session": "^1.17.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.12.5"
+
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "take-it-or-leave-it",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmendez4/take-it-or-leave-it.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmendez4/take-it-or-leave-it/issues"
+  },
+  "homepage": "https://github.com/nmendez4/take-it-or-leave-it#readme",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+
   }
 }
