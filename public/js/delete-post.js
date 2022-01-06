@@ -23,4 +23,4 @@ async function deleteFormHandler(event) {
 };
 
 // missing selector
-document.querySelector('.').addEventListener('click', deleteFormHandler);
+document.querySelector('.delete-post').addEventListener('click', deleteFormHandler);
