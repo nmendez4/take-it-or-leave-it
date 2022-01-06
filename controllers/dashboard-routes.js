@@ -10,8 +10,8 @@ router.get('/', withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      'post_text',
-      'title',
+      'product_name',
+      'description',
       'created_at'
     ],
     include: [
@@ -46,8 +46,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      'post_text',
-      'title',
+      'product_name',
+      'description',
       'created_at'
     ],
     include: [
