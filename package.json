@@ -8,6 +8,10 @@
     "express-session": "^1.17.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.12.5"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 798a9906e6bf895109f2e1d7bd54fa04342ee571
   },
   "scripts": {
     "start": "nodemon server.js"
@@ -28,5 +32,9 @@
   "description": "",
   "devDependencies": {
     "nodemon": "^2.0.15"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 798a9906e6bf895109f2e1d7bd54fa04342ee571
   }
 }
