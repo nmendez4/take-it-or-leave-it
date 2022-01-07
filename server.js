@@ -5,7 +5,7 @@ const routes = require('./controllers');
 
 // Leahs test
 const exphbs = require('express-handlebars');
-
+const fileUpload = require('express-fileupload');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -13,6 +13,9 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// default use of express-fileupload
+app.use(fileUpload());
 
 const hbs = exphbs.create({});
 //Leahs test Handlebars view engines

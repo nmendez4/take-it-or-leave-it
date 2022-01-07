@@ -1,7 +1,9 @@
-
+<form action="/" method = "POST" enctype="multipart/form-data">
 <h1>Upload a photo</h1>
 
-<input id = 'upload-input'/>
-<button id='upload-btn'>Upload</button>
+<input type = "file" name = "photoUpload" accept = "image/*" id = 'upload-input'/>
+<input type = "submit">
+{{!-- <button id='upload-btn'>Upload</button> --}}
+</form>
 
-<script src='/js/upload-test.js'></script>
+{{!-- <script src='/js/upload-test.js'></script> --}}
