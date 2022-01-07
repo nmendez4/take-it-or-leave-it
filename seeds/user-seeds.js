@@ -1,25 +1,26 @@
 const { User } = require('../models');
+const bcrypt = require('bcrypt');
 
 const userData = [
   {
     username: 'CaptainAmerica',
     email: 'Captain@email.com',
-    password: 'Captainspwd'
+    password: bcrypt.hashSync('Captainspwd',bcrypt.genSaltSync(10)),
   },
   {
     username: 'IronMan',
     email: 'Iron@email.com',
-    password: 'Ironspwd'
+    password: bcrypt.hashSync('Ironspwd',bcrypt.genSaltSync(10)),
   },
   {
     username: 'IncredibleHulk',
     email: 'Hulk@email.com',
-    password: 'Hulkspwd'
+    password: bcrypt.hashSync('Hulkspwd',bcrypt.genSaltSync(10)),
   },
   {
     username: 'ThorOdinson',
     email: 'Thor@email.com',
-    password: 'Thorspwd'
+    password: bcrypt.hashSync('Thorspwd',bcrypt.genSaltSync(10)),
   },
 ];
 
