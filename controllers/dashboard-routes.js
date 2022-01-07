@@ -12,7 +12,8 @@ router.get('/', withAuth, (req, res) => {
       'id',
       'product_name',
       'description',
-      'created_at'
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
@@ -48,7 +49,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
       'id',
       'product_name',
       'description',
-      'created_at'
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {

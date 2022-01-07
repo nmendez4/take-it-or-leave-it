@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {User, Post} = require("../../models");
+const {User, Post, Like} = require("../../models");
 
 router.get('/', (req, res) => {
   User.findAll({
@@ -27,6 +27,12 @@ router.get('/:id', (req, res) => {
           model: Post,
           attributes: ['product_name']
         }
+      },
+      {
+        model: Post,
+        attributes: ['title'],
+        through: Like,
+        as: 'liked_posts'
       }
     ],
     where: {

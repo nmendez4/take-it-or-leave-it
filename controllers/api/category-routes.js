@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { Category, Product } = require('../../models');
+const { Category, Post } = require('../../models');
 
 router.get('/', (req, res) => {
   Category.findAll({
     include: [
       {
         model: Product,
-        attributes: ['product_name', 'price', 'stock']
+        attributes: ['product_name', 'description']
       }
     ]
   })
@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Product,
-        attributes: ['product_name', 'price', 'stock']
+        attributes: ['product_name', 'description']
       }
     ]
   })
