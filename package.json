@@ -8,10 +8,10 @@
     "express-session": "^1.17.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.12.5"
-
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "seed": "nodemon seeds/index.js"
   },
   "name": "take-it-or-leave-it",
   "version": "1.0.0",
@@ -29,6 +29,5 @@
   "description": "",
   "devDependencies": {
     "nodemon": "^2.0.15"
-
   }
 }
