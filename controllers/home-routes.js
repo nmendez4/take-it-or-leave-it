@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       'product_name',
       'description',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
@@ -62,7 +62,8 @@ router.get('/post/:id', (req, res) => {
       'product_name',
       'description',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count']
+      // changed "vote" to "like" where table is called LF
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {

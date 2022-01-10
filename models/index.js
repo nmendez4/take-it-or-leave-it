@@ -68,10 +68,4 @@ Category.hasMany(Post, {
     foreignKey: 'category_id'
 });
 
-module.exports = {
-    User, Post, Like, Category, Comment,
-};
-
-
-
 module.exports = { User, Post, Like, Category, Comment };

@@ -5,7 +5,14 @@ const { Post, User, Comment, Like } = require('../../models');
 router.get('/', (req, res) => {
     console.log('======================');
     Post.findAll({
-      attributes: ['id', 'product_name', 'description', 'created_at', [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count']],
+      
+      attributes: 
+      ['id', 
+      'product_name', 
+      'description', 
+      'created_at'
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+    ],
       order: [['created_at', 'DESC']], 
       include: [
         {
@@ -38,8 +45,8 @@ router.get('/:id', (req, res) => {
       'id',
       'product_name',
       'description',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count']
+      'created_at'
+      [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
