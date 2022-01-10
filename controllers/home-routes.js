@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
       'id',
       'product_name',
       'description',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count']
+      'created_at'
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
@@ -32,8 +32,8 @@ router.get('/', (req, res) => {
     .then(dbPostData => {
       const posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('homepage', {
-        posts,
-        loggedIn: req.session.loggedIn
+        posts
+        // loggedIn: req.session.loggedIn
       });
 
     })
@@ -61,8 +61,8 @@ router.get('/post/:id', (req, res) => {
       'id',
       'product_name',
       'description',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = like.post_id)'), 'like_count']
+      'created_at'
+      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
     ],
     include: [
       {
