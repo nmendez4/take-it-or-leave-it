@@ -21,7 +21,6 @@
                 {{#if loggedIn}}
                 <a href="/" class="navbar">Homepage</a>
                 <a href="/dashboard" class="navbar">Dashboard</a>
-                <a href="/dashboard/create" class="navbar">Create New Post</a>
                 <button id="logout" class="button btn-danger">Logout</button>
                 {{else}}
                 <a href="/" class="navbar-item">Homepage</a>
@@ -37,16 +36,6 @@
         <footer class="footer">
             <div>
                 <p>
-                    <a href="/">Homepage</a>{{#if loggedIn}} |
-                    <a href="/dashboard/">Dashboard</a> |
-                    <a href="/dashboard/create/">Create New Post</a>
-                    {{else}}
-                    | <a href="/login/">Login</a>
-                    {{/if}}
-                </p>
-            </div>
-            <div>
-                <p>
                     <strong>Take It Or Leave It</strong> by <a href="https://github.com/nmendez4/take-it-or-leave-it">Our Collaborators</a> | made with 🩸💦🥲 
                     | Source Code: <a href="https://github.com/nmendez4/take-it-or-leave-it"><i class="bi bi-github"></i></a> |
                     <a href="mailto:nmendez6594@gmail.com"><i class="bi bi-mailbox"></i></a>
@@ -55,7 +44,7 @@
         </footer>
     </div>
     {{#if loggedIn}}
-    <script src="/public/js/logout.js"></script>
+    <script src="/js/logout.js"></script>
     {{/if}}
     </body>
 </html>
