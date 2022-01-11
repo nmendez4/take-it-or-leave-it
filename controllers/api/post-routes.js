@@ -4,11 +4,10 @@ const { Post, User, Comment, Like, Category } = require('../../models');
 
 router.get('/', (req, res) => {
     console.log('======================');
-    Post.findAll({
-      
+    Post.findAll({      
       attributes: 
       [
-        'id', 
+      'id', 
       'product_name', 
       'description', 
       'created_at',

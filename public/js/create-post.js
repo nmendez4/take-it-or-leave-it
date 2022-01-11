@@ -1,3 +1,4 @@
+// should also prompt the user to upload a photo of their product/item
 async function newFormHandler(event) {
     event.preventDefault();
 
