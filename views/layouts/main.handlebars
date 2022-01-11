@@ -25,6 +25,7 @@
                 {{else}}
                 <a href="/" class="navbar-item">Homepage</a>
                 <a href="/login" class="button">Login</a>
+                {{/if}}
             </nav>
         </header>
 
@@ -52,8 +53,8 @@
             </div>
         </footer>
     </div>
-    {{!-- {{#if loggedIn}} --}}
+    {{#if loggedIn}}
     <script src="/public/js/logout.js"></script>
-    {{!-- {{/if}} --}}
+    {{/if}}
     </body>
 </html>
