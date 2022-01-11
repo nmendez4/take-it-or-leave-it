@@ -1,8 +1,8 @@
 async function editFormHandler(event) {
     event.preventDefault();
 
-    const title = document.querySelector('input[name="post-title"]').value;
-    const postContent = document.querySelector('input[name="post-content"]').value;
+    const product_name = document.querySelector('input[name="product_name"]').value;
+    const description = document.querySelector('input[name="description"]').value;
     const id = window.location.toString().split('/')[
         window.location.toString.split('/').length - 1
     ];
@@ -10,8 +10,8 @@ async function editFormHandler(event) {
     const response = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
-            title,
-            postContent
+            product_name,
+            description
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -26,4 +26,4 @@ async function editFormHandler(event) {
 };
 
 // missing selector
-document.querySelector('').addEventListener('submit', editFormHandler);
+document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);

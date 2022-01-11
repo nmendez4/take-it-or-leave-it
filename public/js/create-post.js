@@ -2,14 +2,14 @@
 async function newFormHandler(event) {
     event.preventDefault();
 
-    const title = document.querySelector('input[name="post-title"]').value;
-    const postContent = document.querySelector('input[name="post-content"]').value;
+    const product_name = document.querySelector('input[name="product_name"]').value;
+    const description = document.querySelector('input[name="description"]').value;
 
     const response = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({
-            title,
-            postContent
+            product_name,
+            description
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -24,4 +24,4 @@ async function newFormHandler(event) {
 }
 
 // missing selector
-document.querySelector('').addEventListener('submit', newFormHandler);
+document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
