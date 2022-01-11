@@ -1,11 +1,18 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment, Like } = require('../../models');
+const { Post, User, Comment, Like, Category } = require('../../models');
 
 router.get('/', (req, res) => {
     console.log('======================');
-    Post.findAll({
-      attributes: ['id', 'product_name', 'description', 'created_at', [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']],
+    Post.findAll({      
+      attributes: 
+      [
+      'id', 
+      'product_name', 
+      'description', 
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
+    ],
       order: [['created_at', 'DESC']], 
       include: [
         {
@@ -19,7 +26,12 @@ router.get('/', (req, res) => {
         {
           model: User,
           attributes: ['username']
+        },
+        {
+          model: Category,
+          attributes: ['category_name']
         }
+
       ]
     })
     .then(dbPostData => res.json(dbPostData))
@@ -38,8 +50,8 @@ router.get('/:id', (req, res) => {
       'id',
       'product_name',
       'description',
-      'created_at'
-      // [sequelize.literal('(SELECT COUNT(*) FROM like WHERE post.id = like.post_id)'), 'like_count']
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
     include: [
       {
@@ -53,6 +65,10 @@ router.get('/:id', (req, res) => {
       {
         model: User,
         attributes: ['username']
+      },
+      {
+        model: Category,
+        attributes: ['category_name']
       }
     ]
   })
@@ -81,6 +97,31 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
       });
 });
+
+// PUT /api/posts/like
+router.put('/like', (req, res) => {
+  Like.create({
+    user_id: req.body.user_id,
+    post_id: req.body.post_id
+  }).then(() => {
+    // then find the post we just voted on
+    return Post.findOne({
+      where: {
+        id: req.body.post_id
+      },
+      attributes: [
+        'id',
+        'product_name',
+        'description',
+        'created_at',
+        [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
+      ]
+    })
+    .then(dbPostData => res.json(dbPostData))
+    .catch(err => res.json(err));
+  });
+});
+
 
 router.put('/:id', (req, res) => {
     Post.update(

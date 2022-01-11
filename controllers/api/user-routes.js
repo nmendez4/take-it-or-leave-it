@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {User, Post, Like} = require("../../models");
+const {User, Post, Like, Comment} = require("../../models");
 
 router.get('/', (req, res) => {
   User.findAll({
@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   })
   .then(dbUserData => res.json(dbUserData))
   .catch(err => {
-      console.log(err);
+      console.log(err); 
       res.status(500).json(err);
   });
 });
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Post,
-        attributes: ['title'],
+        attributes: ['product_name'],
         through: Like,
         as: 'liked_posts'
       }
@@ -66,7 +66,7 @@ router.post("/", (req, res) => {
     
         res.json(dbUserData);
       });
-    })
+    });
 });
 
 router.post('/login', (req, res) => {
