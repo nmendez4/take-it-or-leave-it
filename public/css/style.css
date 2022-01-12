@@ -8,12 +8,12 @@ body, html {
     padding: 0;
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
-    color: darkgrey;
+    color: rgb(94, 94, 94);
 }
 
 .main-title, .bg-gradient {
     color: #ccc;
-  background-image: linear-gradient(darkslateblue, darkseagreen);
+    background-image: linear-gradient(darkslateblue, darkseagreen);
 }
 
 .navbar {
@@ -28,7 +28,7 @@ a{
 
 a:hover {
     color: darkslateblue;
-    background-color: darkgrey;
+    background-color: rgb(94, 94, 94);
 }
 
 button {
@@ -91,7 +91,7 @@ main {
 }
 
 .btn {
-    background: darkgrey;
+    background: rgb(94, 94, 94);
     border: none;
     padding: 0;
     cursor: pointer;
@@ -124,7 +124,7 @@ main {
 .post .title span {
     font-style: oblique;
     font-size: 85%;
-    color: darkgrey;
+    color: rgb(94, 94, 94);
 }
 
 .edit-link {
