@@ -1,5 +1,23 @@
-
+{{!-- test multi-part form --}}
 <section>
+  <h2>Create New Post</h2>
+  <form class="new-post-form" action="/uploads" method="POST" enctype="multipart/form-data">
+    <div>
+      <label for="product_name">Title</label>
+      <input type="text" id="product_name" name="product_name" />
+    </div>
+    <div>
+      <label for="description">description</label>
+      <input id="description" name="description" />
+    </div>
+    <input type="file" name="photoUpload" accept="image/*" id='upload-input' />
+    <input type="submit">
+    
+  </form>
+
+
+
+{{!-- <section>
   <h2>Create New Post</h2>
 
   <form class="new-post-form">
@@ -13,7 +31,7 @@
     </div>
     <button type="submit" class="btn">Create</button>
   </form>
-</section>
+</section> --}}
 
 {{#if posts.length}}
 <section>
@@ -30,4 +48,4 @@
 {{/if}}
 
 
-<script src="/js/create-post.js"></script>
+{{!-- <script src="/js/create-post.js"></script> --}}

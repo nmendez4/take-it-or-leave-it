@@ -2,6 +2,27 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
+router.post('/uploads', (req, res) => {
+  let photoUpload;
+  let uploadPath;
+
+   console.log('this is req.files',req.files);
+
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No photos uploaded.');
+  }
+
+  photoUpload = req.files.photoUpload;
+  uploadPath = __dirname + '/upload/' + photoUpload.name;
+  // console.log(photoUpload);
+
+  photoUpload.mv(uploadPath, function (err) {
+    if (err) return res.status(500).send(err);
+
+    // res.send('file uploaded')
+  })
+})
+
 
 router.get('/', (req, res) => {
   console.log(req.session);
