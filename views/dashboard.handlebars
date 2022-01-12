@@ -1,37 +1,23 @@
+{{!-- test multi-part form --}}
 <section>
   <h2>Create New Post</h2>
-
-  <form class="new-post-form">
+  <form class="new-post-form" action="/uploads" method="POST" enctype="multipart/form-data">
     <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
+      <label for="product_name">Title</label>
+      <input type="text" id="product_name" name="product_name" />
     </div>
     <div>
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
+      <label for="description">description</label>
+      <input id="description" name="description" />
     </div>
-    <button type="submit" class="btn">Create</button>
+    <input type="file" name="photoUpload" accept="image/*" id='upload-input' />
+    <input type="submit">
+    
   </form>
-</section>
 
-{{#if posts.length}}
-<section>
-  <h2>Your Posts</h2>
-  <ol>
-    {{#each posts as |post|}}
-    <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
+{{!-- original form --}}
 
-<section>
-  <h2>Create New Post</h2>
-
-  <form class="new-post-form">
+  {{!-- <form class="new-post-form">
     <div>
       <label for="product_name">Title</label>
       <input type="text" id="product_name" name="product_name" />
@@ -41,7 +27,7 @@
       <input id="description" name="description" />
     </div>
     <button type="submit" class="btn">Create</button>
-  </form>
+  </form> --}}
 </section>
 
 {{#if posts.length}}
@@ -59,4 +45,4 @@
 {{/if}}
 
 
-<script src="/public/js/create-post.js"></script>
+<script src="/js/create-post.js"></script>

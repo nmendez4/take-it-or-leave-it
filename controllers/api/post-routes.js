@@ -84,12 +84,13 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
+// --------------------------------------------------
 router.post('/', (req, res) => {
-    Post.create({
+  console.log(req.files);
+  Post.create({
       product_name: req.body.product_name,
       description: req.body.description,
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
     })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
@@ -97,7 +98,7 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
       });
 });
-
+// ------------------------------------------------------
 // PUT /api/posts/like
 router.put('/like', (req, res) => {
   Like.create({
