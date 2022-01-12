@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment, Category } = require('../models');
 
 
 router.get('/', (req, res) => {
@@ -98,4 +98,39 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
+router.get('/category/:id', (req, res) => {
+  Category.findAll({
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Post,
+        attributes: [
+        'product_name', 
+        'description',
+        'created_at'
+      ]
+      }
+    ]
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No category found with this id' });
+        return;
+      }
+
+      const cat = dbPostData;
+
+      res.render('cat', {
+        cat,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+  
 module.exports = router;
