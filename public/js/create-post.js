@@ -3,13 +3,15 @@ async function newFormHandler(event) {
     event.preventDefault();
 
     const product_name = document.querySelector('input[name="product_name"]').value;
+    // const price = document.querySelector('input[name="price"]').value;
     const description = document.querySelector('input[name="description"]').value;
 
     const response = await fetch(`/api/posts`, {
         method: 'POST',
         body: JSON.stringify({
             product_name,
-            description
+            description,
+            // price
         }),
         headers: {
             'Content-Type': 'application/json'

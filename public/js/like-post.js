@@ -1,18 +1,16 @@
 async function likesFormHandler(event) {
     event.preventDefault();
 
-    const likes = document
 
-    const postId = window.location.toString().split('/')[
-        window.location.toString().split.length - 1
+    const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
     ];
 
-    if (likes) {
-        const response = await fetch(`/api/post/likes`, {
-            method: 'POST',
+   
+        const response = await fetch(`/api/posts/likes`, {
+            method: 'PUT',
             body: JSON.stringify({
-                likes,
-                postId
+                post_id: id
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -24,8 +22,8 @@ async function likesFormHandler(event) {
         } else {
             alert(response.statusText)
         }
-    }
+    
 }
 
 // missing selector
-document.querySelector('').addEventListener('click', likesFormHandler);
+document.querySelector('.interested-btn').addEventListener('click', likesFormHandler);
