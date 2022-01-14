@@ -29,6 +29,13 @@ const postData = [
     category_id: 2,
     price: 250.00
   },
+  {
+    product_name: 'pants',
+    description: 'Comfey pants',
+    user_id: 4,
+    category_id: 3,
+    price: 250.00
+  },
 ];
 
 const seedPosts = () => Post.bulkCreate(postData);
