@@ -25,5 +25,4 @@ async function likesFormHandler(event) {
     
 }
 
-// missing selector
 document.querySelector('.interested-btn').addEventListener('click', likesFormHandler);
