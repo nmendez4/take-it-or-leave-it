@@ -15,8 +15,8 @@
     "sequelize": "^6.12.5"
   },
   "scripts": {
-    "start": "server.js",
-    "seed": "seeds/index.js"
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
   },
   "name": "take-it-or-leave-it",
   "version": "1.0.0",
