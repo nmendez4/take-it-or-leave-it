@@ -2,8 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
-// ---------------PHOTO ROUTE-------------------
-
+// ---------------PHOTO ROUTE-------------------//
 
 router.post('/uploads', async (req, res) => {
   let photoUpload;

@@ -32,7 +32,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.json());
 // app.use(formidable);
-app.use(fileupload({debug: true}));
+app.use(fileupload());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));

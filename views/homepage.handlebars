@@ -3,6 +3,7 @@
   {{#each posts as |post|}}
   <li>
     {{> post-info post }}
+    <img src="../images/{{post.img_file}}" alt="{{post.product_name}}"/>
   </li>
   {{/each}}
 </ol>

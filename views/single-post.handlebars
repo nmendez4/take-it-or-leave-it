@@ -1,7 +1,9 @@
 
 {{> post-info post }}
+<img src="/public/images/{{post.img_file}}" alt="{{post.product_name}}"/>
 
 {{#if loggedIn}}
+
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>

@@ -5,15 +5,17 @@ async function newFormHandler(event) {
     const product_name = document.querySelector('input[name="product_name"]').value;
     const description = document.querySelector('input[name="description"]').value;
     const img_path = document.querySelector('input[name="photoUpload"]').value;
-    let img_file
+    // let img_file
+    const img_file = img_path.split(`\\`)[2]
 
-    if(PORT = 3001){
-    img_file = img_path.split(`\\`)[2];
-    }
-    // may need to change for heroku
-    else{
-    img_file = img_path.split(`\\`)[2];
-    }
+
+    // if(PORT = 3001){
+    // img_file = img_path.split(`\\`)[2];
+    // }
+    // // may need to change for heroku
+    // else{
+    // img_file = img_path.split(`\\`)[2];
+    // }
 
 
 
@@ -26,7 +28,6 @@ async function newFormHandler(event) {
         }),
         headers: {
             'Content-Type': 'application/json'
-            // 'Content-Type': 'multipart/form-data'
         }
     });
 
