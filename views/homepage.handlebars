@@ -1,0 +1,11 @@
+<nav>
+  | <a href="/category/1">Appliances</a> | 
+  <a href="/category/2">Electronics</a> | 
+  <a href="/category/3">Clothing</a> | 
+  <a href="/category/4">Furniture</a> |
+</nav>
+<ol class="post-list">
+  {{#each posts as |post|}}
+    {{> post-info post }}
+  {{/each}}
+</ol>
