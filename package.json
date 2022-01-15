@@ -14,8 +14,8 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "seed": "nodemon seeds/index.js"
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
   },
   "name": "take-it-or-leave-it",
   "version": "1.0.0",
