@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
       'product_name',
       'description',
       'created_at',
+      'price',
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
     include: [
@@ -62,6 +63,7 @@ router.get('/post/:id', (req, res) => {
       'product_name',
       'description',
       'created_at',
+      'price',
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
     include: [
@@ -109,7 +111,8 @@ router.get('/category/:id', (req, res) => {
         attributes: [
         'product_name', 
         'description',
-        'created_at'
+        'created_at',
+        'price'
       ]
       }
     ]
