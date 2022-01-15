@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
       'product_name', 
       'description', 
       'created_at',
+      'img_file',
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
       order: [['created_at', 'DESC']], 
@@ -89,6 +90,7 @@ router.post('/', (req, res) => {
     Post.create({
       product_name: req.body.product_name,
       description: req.body.description,
+      img_file: req.body.img_file,
       user_id: req.session.user_id
     })
       .then(dbPostData => res.json(dbPostData))

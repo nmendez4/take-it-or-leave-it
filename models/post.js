@@ -38,7 +38,7 @@ Post.init(
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     img_file: {
       type: DataTypes.STRING,

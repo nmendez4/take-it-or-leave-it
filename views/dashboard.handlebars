@@ -1,6 +1,7 @@
 {{!-- test multi-part form --}}
 <section>
   <h2>Create New Post</h2>
+
   <form class="new-post-form" action="/uploads" method="POST" enctype="multipart/form-data">
     <div>
       <label for="product_name">Title</label>
@@ -40,6 +41,7 @@
     {{#each posts as |post|}}
     <li>
       {{> post-info post}}
+      <img src="/images/{{post.img_file}}" alt="{{post.product_name}}"/>
       <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
     </li>
     {{/each}}
@@ -48,4 +50,4 @@
 {{/if}}
 
 
-{{!-- <script src="/js/create-post.js"></script> --}}
+<script src="/js/create-post.js"></script>

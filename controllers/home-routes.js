@@ -2,7 +2,10 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 
-router.post('/uploads', (req, res) => {
+// ---------------PHOTO ROUTE-------------------
+
+
+router.post('/uploads', async (req, res) => {
   let photoUpload;
   let uploadPath;
 
@@ -13,11 +16,12 @@ router.post('/uploads', (req, res) => {
   }
 
   photoUpload = req.files.photoUpload;
-  uploadPath = __dirname + '/upload/' + photoUpload.name;
-  // console.log(photoUpload);
+  uploadPath = './public/images/' + photoUpload.name;
+
 
   photoUpload.mv(uploadPath, function (err) {
     if (err) return res.status(500).send(err);
+    
 
     // res.send('file uploaded')
   })
@@ -33,6 +37,7 @@ router.get('/', (req, res) => {
       'product_name',
       'description',
       'created_at',
+      'img_file',
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
     include: [
