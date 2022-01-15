@@ -102,27 +102,15 @@ router.post('/', (req, res) => {
 });
 
 // PUT /api/posts/like
-router.put('/like', (req, res) => {
-  Like.create({
-    user_id: req.body.user_id,
-    post_id: req.body.post_id
-  }).then(() => {
-    // then find the post we just voted on
-    return Post.findOne({
-      where: {
-        id: req.body.post_id
-      },
-      attributes: [
-        'id',
-        'product_name',
-        'description',
-        'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
-      ]
-    })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => res.json(err));
-  });
+router.put('/likes', (req, res) => {
+  if (req.session) {
+    Post.liked({ ...req.body, user_id: req.session.user_id }, { Like, Comment, User })
+      .then(updatedVoteData => res.json(updatedVoteData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
 
 

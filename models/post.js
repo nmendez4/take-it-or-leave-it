@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Post model
 class Post extends Model {
 
   static liked(body, models) {
@@ -43,6 +42,10 @@ Post.init(
     img_file: {
       type: DataTypes.STRING,
       // allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL(5,2),
+    //   allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,

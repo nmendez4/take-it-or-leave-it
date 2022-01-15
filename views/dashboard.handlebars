@@ -11,28 +11,11 @@
       <label for="description">description</label>
       <input id="description" name="description" />
     </div>
+    <label for="upload-input">upload a photo</label>
     <input type="file" name="photoUpload" accept="image/*" id='upload-input' />
-    <input type="submit">
+    <input type="Submit" value="Create Post">
     
   </form>
-
-
-
-{{!-- <section>
-  <h2>Create New Post</h2>
-
-  <form class="new-post-form">
-    <div>
-      <label for="product_name">Title</label>
-      <input type="text" id="product_name" name="product_name" />
-    </div>
-    <div>
-      <label for="description">description</label>
-      <input id="description" name="description" />
-    </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
-</section> --}}
 
 {{#if posts.length}}
 <section>

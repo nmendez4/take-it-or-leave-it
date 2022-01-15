@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment, Category } = require('../models');
 
-// ---------------PHOTO ROUTE-------------------//
+// PHOTO UPLOAD ROUTE//
 
 router.post('/uploads', async (req, res) => {
   let photoUpload;
   let uploadPath;
 
-   console.log('this is req.files',req.files);
+  console.log('this is req.files', req.files);
 
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No photos uploaded.');
@@ -20,12 +20,10 @@ router.post('/uploads', async (req, res) => {
 
   photoUpload.mv(uploadPath, function (err) {
     if (err) return res.status(500).send(err);
-    
-
-    // res.send('file uploaded')
   })
 })
 
+// Post Routes//
 
 router.get('/', (req, res) => {
   console.log(req.session);
@@ -87,6 +85,7 @@ router.get('/post/:id', (req, res) => {
       'product_name',
       'description',
       'created_at',
+      'price',
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
     include: [
@@ -114,6 +113,44 @@ router.get('/post/:id', (req, res) => {
 
       res.render('single-post', {
         post,
+        loggedIn: req.session.loggedIn
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+// Category routes
+
+router.get('/category/:id', (req, res) => {
+  Category.findAll({
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Post,
+        attributes: [
+          'product_name',
+          'description',
+          'created_at',
+          'price'
+        ]
+      }
+    ]
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No category found with this id' });
+        return;
+      }
+
+      const cat = dbPostData;
+
+      res.render('cat', {
+        cat,
         loggedIn: req.session.loggedIn
       });
     })
