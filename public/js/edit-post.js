@@ -25,5 +25,4 @@ async function editFormHandler(event) {
     }
 };
 
-// missing selector
 document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
