@@ -11,7 +11,7 @@ body, html {
     color: rgb(94, 94, 94);
 }
 
-.main-title, .bg-gradient {
+.main-title {
     color: #ccc;
     background-image: linear-gradient(darkslateblue, darkseagreen);
 }
