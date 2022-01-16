@@ -24,7 +24,6 @@
     {{#each posts as |post|}}
     <li>
       {{>post-info post}}
-      <img src="/images/{{post.img_file}}" alt="{{post.product_name}}"/>
       <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
     </li>
     {{/each}}
