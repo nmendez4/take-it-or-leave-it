@@ -8,8 +8,12 @@
       <input type="text" id="product_name" name="product_name" />
     </div>
     <div>
-      <label for="description">description</label>
+      <label for="description">Description</label>
       <input id="description" name="description" />
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input id="price" name="price" />
     </div>
     <label for="upload-input">upload a photo</label>
     <input type="file" name="photoUpload" accept="image/*" id='upload-input' />
@@ -23,7 +27,7 @@
   <ol>
     {{#each posts as |post|}}
     <li>
-      {{>post-info post}}
+      {{> post-info post}}
       <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
     </li>
     {{/each}}
