@@ -48,7 +48,8 @@ Take it or Leave It is a comprehensive platform that lets users sign in and buil
 ![dashboard](https://user-images.githubusercontent.com/90152576/149674544-03f5d3ce-9b68-4260-82b7-0777f044f929.png)
 ![single=post](https://user-images.githubusercontent.com/90152576/149674547-392bf9ae-b80d-40cd-b22e-0e9cb352e340.png)
 
-(link to heroku (work in progress))
+https://desolate-dusk-43697.herokuapp.com/
+
 
 ## Process of making
 
