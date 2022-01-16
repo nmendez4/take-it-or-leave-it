@@ -24,5 +24,5 @@ async function loginFormHandler(event) {
     }
 };
 
-// missing selector
+
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);

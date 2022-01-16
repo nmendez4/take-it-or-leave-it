@@ -1,23 +1,25 @@
-
+{{!-- test multi-part form --}}
 <section>
   <h2>Create New Post</h2>
 
-  <form class="new-post-form">
+  <form class="new-post-form" action="/uploads" method="POST" enctype="multipart/form-data">
     <div>
       <label for="product_name">Title</label>
       <input type="text" id="product_name" name="product_name" />
     </div>
-    {{!-- <div>
-      <label for="price">price</label>
-      <input id="price" name="price" />
-    </div> --}}
     <div>
-      <label for="description">description</label>
+      <label for="description">Description</label>
       <input id="description" name="description" />
     </div>
-    <button type="submit" class="btn">Create</button>
+    <div>
+      <label for="price">Price</label>
+      <input id="price" name="price" />
+    </div>
+    <label for="upload-input">upload a photo</label>
+    <input type="file" name="photoUpload" accept="image/*" id='upload-input' />
+    <input type="Submit" value="Create Post">
+    
   </form>
-</section>
 
 {{#if posts.length}}
 <section>

@@ -13,6 +13,8 @@ router.get('/', withAuth, (req, res) => {
       'product_name',
       'description',
       'created_at',
+      'img_file',
+      'price',
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
     include: [
@@ -50,6 +52,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
       'product_name',
       'description',
       'created_at',
+      // 'img_file',
+      // 'price'
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
     include: [
