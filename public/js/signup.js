@@ -27,5 +27,5 @@ async function signupFormHandler(event) {
     }
 };
 
-// missing selector
+
 document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
