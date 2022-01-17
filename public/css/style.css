@@ -169,3 +169,10 @@ footer {
     display: flex;
     flex-direction: column;
 }
+
+/* Image element */
+
+img{
+    max-width: 300px;
+    max-height: 300px;
+}

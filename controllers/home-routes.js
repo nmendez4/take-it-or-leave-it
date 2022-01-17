@@ -2,6 +2,28 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment, Category } = require('../models');
 
+// PHOTO UPLOAD ROUTE//
+
+router.post('/uploads', async (req, res) => {
+  let photoUpload;
+  let uploadPath;
+
+  console.log('this is req.files', req.files);
+
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No photos uploaded.');
+  }
+
+  photoUpload = req.files.photoUpload;
+  uploadPath = './public/images/' + photoUpload.name;
+
+
+  photoUpload.mv(uploadPath, function (err) {
+    if (err) return res.status(500).send(err);
+  })
+})
+
+// Post Routes//
 
 router.get('/', (req, res) => {
   console.log(req.session);
@@ -12,6 +34,7 @@ router.get('/', (req, res) => {
       'product_name',
       'description',
       'created_at',
+      'img_file',
       'price',
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
@@ -64,6 +87,7 @@ router.get('/post/:id', (req, res) => {
       'description',
       'created_at',
       'price',
+      'img_file',
       [sequelize.literal('(SELECT COUNT(*) FROM likes WHERE post_id = post.id)'), 'like_count']
     ],
     include: [
@@ -100,6 +124,8 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
+// Category routes
+
 router.get('/category/:id', (req, res) => {
   Category.findAll({
     where: {
@@ -109,11 +135,11 @@ router.get('/category/:id', (req, res) => {
       {
         model: Post,
         attributes: [
-        'product_name', 
-        'description',
-        'created_at',
-        'price'
-      ]
+          'product_name',
+          'description',
+          'created_at',
+          'price'
+        ]
       }
     ]
   })
@@ -135,5 +161,5 @@ router.get('/category/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-  
+
 module.exports = router;
